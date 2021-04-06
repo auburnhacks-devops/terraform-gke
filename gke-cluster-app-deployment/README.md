@@ -4,7 +4,7 @@
 3. Docker Deamon
 4. Git
 
-# Create a Basic Hello-world app
+# Dockerize Hello-world app
 1. Clone this project using https://github.com/auburnhacks-devops/terraform-gke.git
 2. cd into gke-cluster-app-deployment/app
 3. Run "docker build -t hello-world-app:latest ." to build docker image from Dockerfile
