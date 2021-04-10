@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: covidtracking
+  labels:
+    name: covidtracking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: covidtracking
+  template:
+    metadata:
+      name: covidtracking
+      labels:
+        name: covidtracking
+    spec:
+      containers:
+        - name: covidtracking
+          image: gcr.io/gke-demo-309918/covidtracking:v1
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 256Mi
+            limits:
+              memory: 512Mi
+          env:
+            - name: PORT
+              value: "8080"
+            - name: DEBUG_MODE
+              value: "1"

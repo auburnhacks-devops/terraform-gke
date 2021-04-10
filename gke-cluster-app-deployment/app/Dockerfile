@@ -1,12 +1,12 @@
-FROM node:12
+FROM python:3.9-slim
 
-# Create app directory
-WORKDIR /usr/app
+RUN apt update
 
-COPY package*.json ./
+WORKDIR /app
+ADD requirements.txt /app/requirements.txt
+RUN pip install -r /app/requirements.txt
 
-RUN npm install
-COPY . .
+ADD . /app
 
-EXPOSE 8080
-CMD [ "npm", "start" ]
+ENV PORT 8080
+CMD ["gunicorn", "app:app", "--config=config.py"]

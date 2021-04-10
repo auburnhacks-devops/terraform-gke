@@ -4,16 +4,14 @@
 3. Docker Deamon
 4. Git
 
-# Dockerize Hello-world app
+# Dockerize app
 1. Clone this project using https://github.com/auburnhacks-devops/terraform-gke.git
 2. cd into gke-cluster-app-deployment/app
-3. Run "docker build -t hello-world-app:latest ." to build docker image from Dockerfile
-4. Run the following commands to push the docker image
+3. Run the following commands to push the image into GCR
 ```shell
 $ export PROJECT_ID="$(gcloud config get-value project -q)"
 $ gcloud auth configure-docker
-$ docker tag hello-world-app:latest "gcr.io/${PROJECT_ID}/hello-world-app:latest"
-$ docker push "gcr.io/${PROJECT_ID}/hello-world-app:latest"
+$ gcloud builds --project gke-demo-309918 submit --tag gcr.io/gke-demo-309918/covidtracking:v1 .
 ```
 
 # Create GKE Cluster using terraform

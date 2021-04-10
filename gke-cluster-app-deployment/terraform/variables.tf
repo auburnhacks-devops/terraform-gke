@@ -3,7 +3,7 @@ variable "name" {
 }
 
 variable "project" {
-  default = "sinuous-anvil-309816"
+  default = "gke-demo-309918"
 }
 
 variable "location" {
